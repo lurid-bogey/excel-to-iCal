@@ -1,0 +1,2 @@
+# Requirements for the iCal-gen project 
+openpyxl>=3.0.3
