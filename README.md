@@ -1,6 +1,6 @@
 # excel-to-iCal
 
-The script will read an Excel file and will generate iCal events for every date.
+The script will read an Excel file and will generate iCal events for every date. The resulting iCal files can be imported in your favourite calendar app.
 
 ![Excel file](docs/input-file.jpg)
 
