@@ -2,6 +2,8 @@
 
 The script will read an Excel file and will generate iCal events for every date. The resulting iCal files can be imported in your favourite calendar app.
 
+The first row shall contain the name of the event (the summary). The second row can contain an optional description.
+
 ![Excel file](docs/input-file.jpg)
 
 ```
@@ -13,4 +15,5 @@ DTSTART;VALUE=DATE:20220228
 DTEND;VALUE=DATE:20220301
 SUMMARY:Rosenmontag
 END:VEVENT
+...
 ```
