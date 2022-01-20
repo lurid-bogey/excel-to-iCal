@@ -10,7 +10,7 @@ from typing import List
 try:
     import openpyxl
 except ImportError:
-    print(f'Error: Failed to import the "openpyxl" package.')
+    print(f'*** Error: Failed to import the "openpyxl" package.')
     sys.exit(-1)
 
 INPUT_FOLDER = 'in'
@@ -70,7 +70,7 @@ def enumerateExcelFiles(folder: str) -> List[str]:
     try:
         entities = os.listdir(folder)
     except FileNotFoundError:
-        print(f'Error: Folder "{folder}" not found.')
+        print(f'*** Error: Folder "{folder}" not found.')
     else:
         for entity in entities:
             if (os.path.isfile(os.path.join(folder, entity)) and
@@ -112,13 +112,21 @@ def main(inputFolder=INPUT_FOLDER, outputFolder=OUTPUT_FOLDER):
                     # the first cell contains the name of the event.
                     # the second cell contains the description.
                     eventName = col[0].value
+                    try:
+                        assert isinstance(eventName, str)
+                    except AssertionError:
+                        print(f'*** Error in cell "{col[0].coordinate}". Aborting...')
+                        print(f'*** The cell must contain an event name.')
+                        sys.exit(-1)
+
                     eventDescr = col[1].value
                     for cell in col[2:]:
                         eventDate = cell.value
                         try:
                             assert isinstance(eventDate, datetime.datetime)
                         except AssertionError:
-                            print(f'Error in cell "{cell.coordinate}". Aborting...')
+                            print(f'*** Error in cell "{cell.coordinate}". Aborting...')
+                            print(f'*** The cell must contain a date.')
                             sys.exit(-1)
                         else:
                             eventYear = str(eventDate.year)
