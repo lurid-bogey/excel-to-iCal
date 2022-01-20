@@ -13,6 +13,9 @@ except ImportError:
     print(f'*** Error: Failed to import the "openpyxl" package.')
     sys.exit(-1)
 
+from version import VERSION, DESCRIPTION
+
+
 INPUT_FOLDER = 'in'
 OUTPUT_FOLDER = 'out'
 DOMAIN = 'lurid_bogey_ical_generator.dummy.local'
@@ -145,9 +148,12 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(prog='excel-to-iCal.py', description='Generate iCal files')
     parser.add_argument('-i', '--in', dest='input_Folder', default=INPUT_FOLDER, help="Folder with Excel files")
     parser.add_argument('-o', '--out', dest='output_Folder', default=OUTPUT_FOLDER, help="Destination folder for iCal files")
-    # TODO: deal with versions
-    # parser.add_argument('--version', action="store_true", default=None, help="Shows version and exits.")
+    parser.add_argument('-v', '--version', action="store_true", default=None, help="Shows version and exits")
     args = parser.parse_args()
 
-    main(inputFolder=args.input_Folder, outputFolder=args.output_Folder)
-    print('Done')
+    if args.version:
+        print(DESCRIPTION, VERSION)
+        sys.exit(0)
+    else:
+        main(inputFolder=args.input_Folder, outputFolder=args.output_Folder)
+        print('Done')

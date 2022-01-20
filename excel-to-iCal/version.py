@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+
+VERSION_MAJOR = 1
+VERSION_MINOR = 0
+VERSION_PATCH = 10
+VERSION_BUILD = 0
+
+DESCRIPTION = "iCal Generator"
+FILE_NAME = "excel-to-iCal"
+
+# Don't change anything below!
+VERSION = f"{VERSION_MAJOR}.{VERSION_MINOR}.{VERSION_PATCH}.{VERSION_BUILD}"
+VERSION_SHORT = f"{VERSION_MAJOR}.{VERSION_MINOR}"
+fileversC = f"({VERSION_MAJOR}, {VERSION_MINOR}, {VERSION_PATCH}, {VERSION_BUILD})"
+
+__version__ = VERSION
